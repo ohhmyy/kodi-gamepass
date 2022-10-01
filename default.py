@@ -487,7 +487,10 @@ class GamepassGUI(xbmcgui.WindowXML):
                     self.selected_season_type = cur_s_w['season_type']
                     self.selected_week = cur_s_w['week']
                     self.display_seasons()
-
+                    if self.gp.redzone_on_air():
+                        listitem = xbmcgui.ListItem('NFL RedZone - Live', 'NFL RedZone - Live')
+                        self.live_items.append(listitem)
+                    self.live_list.addItems(self.live_items)
                     try:
                         self.display_seasons_weeks()
                         self.display_weeks_games()
@@ -547,7 +550,16 @@ class GamepassGUI(xbmcgui.WindowXML):
                             streams = self.gp.get_game_streams(video_id, live)
                             stream_url = self.select_stream_url(streams)
                             self.play_url(stream_url)
-
+                elif controlId == 240:  # Live content (though not games)
+                    show_name = self.live_list.getSelectedItem().getLabel()
+                    if show_name == 'NFL RedZone - Live':
+                        streams = self.gp.get_redzone_streams()
+                        stream_url = self.select_stream_url(streams)
+                        self.play_url(stream_url)
+                    elif show_name == 'NFL Network - Live':
+                        streams = self.gp.get_nfl_network_streams()
+                        stream_url = self.select_stream_url(streams)
+                        self.play_url(stream_url)
             elif self.main_selection == 'NFL Network':
                 if controlId == 210:  # season is clicked
                     self.init('season')

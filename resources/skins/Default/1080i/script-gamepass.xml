@@ -66,37 +66,6 @@
                   <texturenofocus>gamepass/network_bg.png</texturenofocus>
             </control>
         </control>
-
-        <control type="image">
-            <description>International Gamepass active overlay</description>
-            <visible>String.IsEmpty(Window.Property(domestic))</visible>
-            <left>210</left>
-            <width>562</width>
-            <height>84</height>
-            <aspectratio>stretch</aspectratio>
-            <texture>gamepass/gp_int_selected.png</texture>
-            <visible>!Control.HasFocus(110) + SubString(Window.Property(GP_clicked),true) + Control.IsVisible(110)</visible>
-        </control>
-        <control type="image">
-            <description>Domestic Gamepass active overlay</description>
-            <visible>!String.IsEmpty(Window.Property(domestic))</visible>
-            <left>210</left>
-            <width>562</width>
-            <height>84</height>
-            <aspectratio>stretch</aspectratio>
-            <texture>gamepass/gp_dom_selected.png</texture>
-            <visible>!Control.HasFocus(110) + SubString(Window.Property(GP_clicked),true) + Control.IsVisible(110)</visible>
-        </control>
-        <control type="image">
-            <description>NFL Network active overlay</description>
-            <left>1110</left>
-            <width>562</width>
-            <height>84</height>
-            <aspectratio>stretch</aspectratio>
-            <texture>gamepass/network_focus2.png</texture>
-            <visible>!Control.HasFocus(130) + SubString(Window.Property(NW_clicked),true)</visible>
-        </control>
-
         <control type="button" id="90">
             <description>Addon Settings button</description>
             <left>1810</left>
@@ -109,7 +78,6 @@
             <texturenofocus>gamepass/settings.png</texturenofocus>
             <onclick>Addon.OpenSettings(script.video.nfl.gamepass)</onclick>
         </control>
-
         <control type="list" id="210">
             <description>Season list container</description>
             <left>10</left>
@@ -117,6 +85,7 @@
             <width>1200</width>
             <height>54</height>
             <onup>100</onup>
+			<onleft>240</onleft>
             <ondown>220</ondown>
             <onright>240</onright>
             <viewtype label="list">list</viewtype>
@@ -139,8 +108,8 @@
                     <aligny>center</aligny>
                     <scroll>false</scroll>
                     <info>ListItem.Label</info>
-                    <font>font13</font>
-                    <textcolor>FF333333</textcolor>
+                    <font>font12</font>
+                    <textcolor>FFeaeaea</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>50</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -171,8 +140,8 @@
                     <aligny>center</aligny>
                     <scroll>false</scroll>
                     <info>ListItem.Label</info>
-                    <font>font13</font>
-                    <textcolor>FF222222</textcolor>
+                    <font>font12</font>
+                    <textcolor>FFeaeaea</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>50</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -188,8 +157,8 @@
                     <aligny>center</aligny>
                     <scroll>false</scroll>
                     <info>ListItem.Label</info>
-                    <font>font13</font>
-                    <textcolor>FFFFFFFF</textcolor>
+                    <font>font12</font>
+                    <textcolor>FFeaeaea</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>50</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -197,7 +166,6 @@
                 </control>
             </focusedlayout>
         </control>
-
         <control type="list" id="240">
             <description>Live list container</description>
             <left>1300</left>
@@ -207,6 +175,7 @@
             <onup>100</onup>
             <ondown>220</ondown>
             <onleft>210</onleft>
+			<onright>210</onright>
             <viewtype label="list">list</viewtype>
             <orientation>horizontal</orientation>
             <autoscroll>false</autoscroll>
@@ -228,8 +197,8 @@
                     <aligny>center</aligny>
                     <scroll>false</scroll>
                     <info>ListItem.Label</info>
-                    <font>font13</font>
-                    <textcolor>FF333333</textcolor>
+                    <font>font12</font>
+                    <textcolor>FFf4d60c</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>50</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -260,8 +229,8 @@
                     <aligny>center</aligny>
                     <scroll>false</scroll>
                     <info>ListItem.Label</info>
-                    <font>font13</font>
-                    <textcolor>FF222222</textcolor>
+                    <font>font12</font>
+                    <textcolor>FFf4d60c</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>50</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -277,8 +246,8 @@
                     <aligny>center</aligny>
                     <scroll>false</scroll>
                     <info>ListItem.Label</info>
-                    <font>font13</font>
-                    <textcolor>FFFFFFFF</textcolor>
+                    <font>font12</font>
+                    <textcolor>FFeaeaea</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>50</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -286,11 +255,10 @@
                 </control>
             </focusedlayout>
         </control>
-
         <control type="list" id="220">
             <description>Week/Show list container</description>
             <left>20</left>
-            <top>160</top>
+            <top>170</top>
             <width>320</width>
             <height>840</height>
             <onup>210</onup>
@@ -331,13 +299,14 @@
                     <description>Week/Show Text</description>
                     <left>5</left>
                     <top>0</top>
+					<height>60</height>
                     <width>310</width>
                     <align>center</align>
                     <aligny>center</aligny>
                     <scroll>false</scroll>
                     <info>ListItem.Label</info>
-                    <font>font13</font>
-                    <textcolor>FF111111</textcolor>
+                    <font>font12</font>
+                    <textcolor>FFeaeaea</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>50</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -387,12 +356,13 @@
                     <description>Week/Show text</description>
                     <left>5</left>
                     <width>310</width>
+					<height>60</height>
                     <align>center</align>
                     <aligny>center</aligny>
                     <scroll>false</scroll>
                     <info>ListItem.Label</info>
-                    <font>font13</font>
-                    <textcolor>FFFFFFFF</textcolor>
+                    <font>font12</font>
+                    <textcolor>FFeaeaea</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>50</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -402,12 +372,13 @@
                     <description>Week/Show text</description>
                     <left>5</left>
                     <width>310</width>
+					<height>60</height>
                     <align>center</align>
                     <aligny>center</aligny>
                     <scroll>false</scroll>
                     <info>ListItem.Label</info>
-                    <font>font13</font>
-                    <textcolor>FF111111</textcolor>
+                    <font>font12</font>
+                    <textcolor>FFeaeaea</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>50</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -418,7 +389,7 @@
         <control type="panel" id="230">
             <description>Game/Episode panel container</description>
             <left>350</left>
-            <top>160</top>
+            <top>170</top>
             <width>1560</width>
             <height>840</height>
             <onup>210</onup>
@@ -446,7 +417,7 @@
                 </control>
                 <control type="image">
                         <left>15</left>
-                        <top>2</top>
+                        <top>3</top>
                         <width>100</width>
                         <height>100</height>
                         <info>ListItem.Property(away_thumb)</info>
@@ -454,7 +425,7 @@
                 </control>
                 <control type="image">
                         <left>15</left>
-                        <top>2</top>
+                        <top>3</top>
                         <width>100</width>
                         <height>100</height>
                         <info>ListItem.Property(away_thumb)</info>
@@ -464,15 +435,31 @@
                 <control type="label">
                     <description>Game competitors text</description>
                     <left>115</left>
-                    <top>2</top>
+                    <top>3</top>
                     <width>550</width>
-                    <visible>ListItem.Property(is_game)</visible>
+                    <visible>ListItem.Property(is_game) + ListItem.Property(isPlayable)</visible>
                     <align>center</align>
                     <aligny>top</aligny>
                     <scroll>false</scroll>
                     <info>ListItem.Label</info>
                     <font>font13</font>
-                    <textcolor>FF333333</textcolor>
+                    <textcolor>FFeaeaea</textcolor>
+                    <wrapmultiline>false</wrapmultiline>
+                    <scrollspeed>50</scrollspeed>
+                    <scrollsuffix></scrollsuffix>
+                </control>
+				<control type="label">
+                    <description>Game competitors text</description>
+                    <left>115</left>
+                    <top>3</top>
+                    <width>550</width>
+                    <visible>ListItem.Property(is_game) +!ListItem.Property(isPlayable)</visible>
+                    <align>center</align>
+                    <aligny>top</aligny>
+                    <scroll>false</scroll>
+                    <info>ListItem.Label</info>
+                    <font>font13</font>
+                    <textcolor>AAeaeaea</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>50</scrollspeed>
                     <scrollsuffix></scrollsuffix>
@@ -482,13 +469,29 @@
                     <left>115</left>
                     <top>36</top>
                     <width>550</width>
-                    <visible>ListItem.Property(is_game)</visible>
+                    <visible>ListItem.Property(is_game) + ListItem.Property(isPlayable)</visible>
                     <align>center</align>
                     <aligny>top</aligny>
                     <scroll>true</scroll>
                     <info>ListItem.Property(game_info)</info>
                     <font>font12</font>
-                    <textcolor>FF333333</textcolor>
+                    <textcolor>FFf4d60c</textcolor>
+                    <wrapmultiline>false</wrapmultiline>
+                    <scrollspeed>25</scrollspeed>
+                    <scrollsuffix> - </scrollsuffix>
+                </control>
+				<control type="label">
+                    <description>Game description text</description>
+                    <left>115</left>
+                    <top>36</top>
+                    <width>550</width>
+                    <visible>ListItem.Property(is_game) + !ListItem.Property(isPlayable)</visible>
+                    <align>center</align>
+                    <aligny>top</aligny>
+                    <scroll>true</scroll>
+                    <info>ListItem.Property(game_info)</info>
+                    <font>font12</font>
+                    <textcolor>AAf4d60c</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>25</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -504,7 +507,7 @@
                     <scroll>true</scroll>
                     <label>» Upcoming Game «</label>
                     <font>font12</font>
-                    <textcolor>FF000000</textcolor>
+                    <textcolor>AAeaeaea</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>25</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -513,14 +516,14 @@
                     <description>Show Name</description>
                     <left>130</left>
                     <top>15</top>
-                    <width>670</width>
+                    <width>620</width>
                     <visible>ListItem.Property(is_show)</visible>
                     <align>left</align>
                     <aligny>top</aligny>
                     <scroll>false</scroll>
                     <info>ListItem.Label</info>
                     <font>font13</font>
-                    <textcolor>FF333333</textcolor>
+                    <textcolor>FFeaeaea</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>50</scrollspeed>
                     <scrollsuffix></scrollsuffix>
@@ -529,21 +532,21 @@
                     <description>Show description text</description>
                     <left>130</left>
                     <top>50</top>
-                    <width>670</width>
+                    <width>620</width>
                     <visible>ListItem.Property(is_show)</visible>
                     <align>left</align>
                     <aligny>top</aligny>
                     <scroll>false</scroll>
                     <info>ListItem.Property(game_info)</info>
                     <font>font12</font>
-                    <textcolor>FF333333</textcolor>
+                    <textcolor>FFeaeaea</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>0</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
                 </control>
                 <control type="image">
                         <left>663</left>
-                        <top>2</top>
+                        <top>3</top>
                         <width>100</width>
                         <height>100</height>
                         <info>ListItem.Property(home_thumb)</info>
@@ -551,7 +554,7 @@
                 </control>
                 <control type="image">
                         <left>663</left>
-                        <top>2</top>
+                        <top>3</top>
                         <width>100</width>
                         <height>100</height>
                         <info>ListItem.Property(home_thumb)</info>
@@ -577,7 +580,7 @@
                 </control>
                 <control type="image">
                         <left>15</left>
-                        <top>2</top>
+                        <top>3</top>
                         <width>100</width>
                         <height>100</height>
                         <info>ListItem.Property(away_thumb)</info>
@@ -585,7 +588,7 @@
                 </control>
                 <control type="image">
                         <left>15</left>
-                        <top>2</top>
+                        <top>3</top>
                         <width>100</width>
                         <height>100</height>
                         <info>ListItem.Property(away_thumb)</info>
@@ -595,7 +598,7 @@
                 <control type="label">
                     <description>Game competitors text</description>
                     <left>115</left>
-                    <top>2</top>
+                    <top>3</top>
                     <width>550</width>
                     <visible>ListItem.Property(is_game)</visible>
                     <align>center</align>
@@ -603,7 +606,7 @@
                     <scroll>true</scroll>
                     <info>ListItem.Label2</info>
                     <font>font13</font>
-                    <textcolor>FF222222</textcolor>
+                    <textcolor>FFeaeaea</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>50</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -619,7 +622,7 @@
                     <scroll>true</scroll>
                     <info>ListItem.Property(game_info)</info>
                     <font>font12</font>
-                    <textcolor>FF333333</textcolor>
+                    <textcolor>FFf4d60c</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>25</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -635,7 +638,8 @@
                     <scroll>true</scroll>
                     <label>» Upcoming Game «</label>
                     <font>font12</font>
-                    <textcolor>FF000000</textcolor>
+                    <textcolor>FFeaeaea</textcolor>
+					<colordiffuse>AAFFFFFF</colordiffuse>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>25</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -644,14 +648,14 @@
                     <description>Show Name</description>
                     <left>130</left>
                     <top>15</top>
-                    <width>670</width>
+                    <width>610</width>
                     <visible>ListItem.Property(is_show)</visible>
                     <align>left</align>
                     <aligny>top</aligny>
                     <scroll>true</scroll>
                     <info>ListItem.Label</info>
                     <font>font13</font>
-                    <textcolor>FF222222</textcolor>
+                    <textcolor>FFeaeaea</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>50</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
@@ -660,21 +664,21 @@
                     <description>Show description text</description>
                     <left>130</left>
                     <top>50</top>
-                    <width>670</width>
+                    <width>620</width>
                     <visible>ListItem.Property(is_show)</visible>
                     <align>left</align>
                     <aligny>top</aligny>
                     <scroll>true</scroll>
                     <info>ListItem.Property(game_info)</info>
                     <font>font12</font>
-                    <textcolor>FF333333</textcolor>
+                    <textcolor>FFeaeaea</textcolor>
                     <wrapmultiline>false</wrapmultiline>
                     <scrollspeed>25</scrollspeed>
                     <scrollsuffix> - </scrollsuffix>
                 </control>
                 <control type="image">
                         <left>663</left>
-                        <top>2</top>
+                        <top>3</top>
                         <width>100</width>
                         <height>100</height>
                         <info>ListItem.Property(home_thumb)</info>
@@ -682,7 +686,7 @@
                 </control>
                 <control type="image">
                         <left>663</left>
-                        <top>2</top>
+                        <top>3</top>
                         <width>100</width>
                         <height>100</height>
                         <info>ListItem.Property(home_thumb)</info>
@@ -693,7 +697,7 @@
         </control>
         <control type="scrollbar" id="60">
             <left>9</left>
-            <top>160</top>
+            <top>170</top>
             <width>10</width>
             <height>840</height>
             <onup>60</onup>
@@ -708,7 +712,7 @@
         </control>
         <control type="scrollbar" id="61">
             <left>1901</left>
-            <top>160</top>
+            <top>170</top>
             <width>10</width>
             <height>560</height>
             <onup>61</onup>
